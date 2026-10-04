@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Nadheema Safrin! 🎂 35 💖</title>
+    <meta name="description" content="Happy Birthday Nadheema Safrin - A special birthday wish from Mohammed Ashar with love symbol 35!">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Canvas Confetti & html2canvas -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Background Particle Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Floating Audio Controls -->
+    <div class="audio-control-bar">
+        <button id="bgm-toggle-btn" class="icon-btn" title="Toggle Birthday Music">
+            <i class="fas fa-music"></i>
+            <span class="pulse-ring"></span>
+        </button>
+        <button id="sfx-toggle-btn" class="icon-btn active" title="Toggle Sound FX">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <!-- Single Page Main Wrapper -->
+    <div class="single-page-wrapper">
+
+        <!-- HERO SECTION -->
+        <header class="hero-section text-center">
+            <div class="love-symbol-badge">💖 ASHAR & NADHEEMA • 35 💖</div>
+            <h1 class="hero-title gradient-text">Happy Birthday<br>Nadheema Safrin! 🥳🎂</h1>
+            <p class="hero-subtitle">Specially created with endless love by <strong>Mohammed Ashar</strong></p>
+        </header>
+
+        <!-- CAKE & BLOW CANDLES SECTION -->
+        <section class="glass-card cake-card text-center">
+            <div class="badge-tag">🎂 MAKE A WISH</div>
+            <h2>Blow Out Your Birthday Candles, Nadheema!</h2>
+            <p class="card-desc" id="cake-instruction">Blow into your mic 🎤 or tap the cake below!</p>
+
+            <div class="cake-wrapper" onclick="blowAllCandles()">
+                <img src="assets/cake.png" alt="Birthday Cake" class="cake-img">
+                <div class="flames-container">
+                    <div class="flame" onclick="extinguishCandle(this, event)"></div>
+                    <div class="flame" onclick="extinguishCandle(this, event)"></div>
+                    <div class="flame" onclick="extinguishCandle(this, event)"></div>
+                    <div class="flame" onclick="extinguishCandle(this, event)"></div>
+                    <div class="flame" onclick="extinguishCandle(this, event)"></div>
+                </div>
+            </div>
+
+            <div class="cake-btns">
+                <button id="mic-btn" class="btn btn-secondary" onclick="toggleMicrophone()">
+                    <i class="fas fa-microphone"></i> Enable Mic Blow 🎤
+                </button>
+                <button class="btn btn-glow" onclick="blowAllCandles()">
+                    <i class="fas fa-wind"></i> Tap to Blow Candles 💨
+                </button>
+            </div>
+        </section>
+
+        <!-- EMOTIONAL LETTER & PHOTO SECTION -->
+        <section class="glass-card letter-card">
+            <div class="letter-layout">
+                <!-- User Uploaded Image Polaroid Frame -->
+                <div class="polaroid-wrapper">
+                    <div class="polaroid-card">
+                        <div class="pin">📌</div>
+                        <img src="C:/Users/Admin/.gemini/antigravity/brain/790073a0-c5cf-45c1-bed9-3159466e0038/media__1791138504801.png" alt="Mohammed Ashar & Nadheema Safrin" class="user-photo">
+                        <div class="polaroid-caption">Ashar & Nadheema • 35 💖</div>
+                    </div>
+                </div>
+
+                <!-- Personal Letter from Ashar -->
+                <div class="letter-content">
+                    <span class="badge-tag">💌 FROM MOHAMMED ASHAR</span>
+                    <h2 class="letter-title">Dearest Nadheema,</h2>
+                    <p class="letter-text">
+                        Happy Birthday to the one person who brings endless joy, light, and warmth into my life! ✨
+                    </p>
+                    <p class="letter-text">
+                        Every single moment with you is special. The bond we share and our symbol <strong>35</strong> holds a lifetime of love, laughter, and memories that I treasure deep in my heart. 💖
+                    </p>
+                    <p class="letter-text">
+                        May your birthday be as beautiful, sweet, and bright as you are. I promise to always be by your side, supporting you, laughing with you, and loving you forever! 🌟
+                    </p>
+                    <p class="signature-text">Yours Forever & Always,<br><strong>Mohammed Ashar (35 💖)</strong></p>
+                </div>
+            </div>
+
+            <!-- Floating Balloons Pop -->
+            <div class="balloon-box text-center mt-4">
+                <p class="balloon-hint">🎈 Tap balloons to reveal love messages from Ashar!</p>
+                <div class="balloon-container" id="balloon-container"></div>
+            </div>
+        </section>
+
+        <!-- FUNNY ROAST CARDS GRID -->
+        <section class="roast-section">
+            <div class="section-title text-center">
+                <span class="pill-badge">🔥 OUR FUNNY MOMENTS</span>
+                <h2>Nadheema's Hall of Fame 🏆</h2>
+                <p>Tap cards to flip!</p>
+            </div>
+
+            <div class="roast-grid">
+                <!-- Card 1 -->
+                <div class="roast-card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-heart card-icon"></i>
+                            <h3>The 35 Symbol 💖</h3>
+                            <span class="tap-hint">Tap to flip 🔄</span>
+                        </div>
+                        <div class="card-back">
+                            <p>"35 is our special love symbol — an unbreakable bond between Ashar & Nadheema forever!"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="roast-card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-utensils card-icon"></i>
+                            <h3>Snack Queen 🍟</h3>
+                            <span class="tap-hint">Tap to flip 🔄</span>
+                        </div>
+                        <div class="card-back">
+                            <p>"Says 'I'm not hungry' then proceeds to steal all of Ashar's food!"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="roast-card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <i class="fas fa-laugh-beam card-icon"></i>
+                            <h3>Giggle Champion 🎭</h3>
+                            <span class="tap-hint">Tap to flip 🔄</span>
+                        </div>
+                        <div class="card-back">
+                            <p>"Laughing uncontrollably at Ashar's jokes even when they aren't that funny!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <button class="btn btn-primary" onclick="openContractModal()">
+                    <i class="fas fa-file-signature"></i> Sign 35 Love Agreement 📜
+                </button>
+            </div>
+        </section>
+
+        <!-- SURPRISE GIFT & CERTIFICATE -->
+        <section class="glass-card gift-card text-center">
+            <div class="badge-tag">🎁 SURPRISE FOR NADHEEMA</div>
+            <h2>Unwrap Your Birthday Award!</h2>
+
+            <div class="gift-wrapper" id="gift-wrapper" onclick="openGift()">
+                <img src="assets/gift.png" alt="Gift Box" class="gift-img">
+                <div class="click-pulse">TAP GIFT TO OPEN! 🎁</div>
+            </div>
+
+            <div id="certificate-box" class="certificate-container hidden">
+                <div class="certificate-paper" id="printable-certificate">
+                    <div class="cert-border">
+                        <i class="fas fa-heart cert-badge"></i>
+                        <h2 class="cert-title">OFFICIAL CERTIFICATE OF LOVE & HAPPINESS</h2>
+                        <p class="cert-subtitle">Proudly Presented To</p>
+                        <h1 class="recipient-name">Nadheema Safrin</h1>
+                        <p class="cert-desc">
+                            Awarded by <strong>Mohammed Ashar</strong> for being the most precious, gorgeous, and wonderful person in the world. Sealed with our love symbol <strong>35</strong>!
+                        </p>
+                        <div class="cert-seal">Mohammed Ashar & Nadheema Safrin • 35 💖</div>
+                    </div>
+                </div>
+                <div class="cert-actions">
+                    <button class="btn btn-secondary" onclick="downloadCertificate()">
+                        <i class="fas fa-download"></i> Save Certificate 📜
+                    </button>
+                    <button class="btn btn-glow" onclick="triggerConfettiExplosion()">
+                        <i class="fas fa-glass-cheers"></i> Celebrate 35! 🎆
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center footer-text">
+            Created with endless love by <strong>Mohammed Ashar</strong> for <strong>Nadheema Safrin</strong> • <strong>35 💖</strong>
+        </footer>
+    </div>
+
+    <!-- CONTRACT MODAL -->
+    <div id="contract-modal" class="glass-modal hidden">
+        <div class="modal-content contract-modal-content">
+            <button class="close-modal" onclick="closeContractModal()">&times;</button>
+            <div class="contract-paper">
+                <h2 class="contract-title">📜 THE 35 LOVE & FRIENDSHIP AGREEMENT</h2>
+                <p class="contract-subtitle">Between <strong>Mohammed Ashar</strong> & <strong>Nadheema Safrin</strong></p>
+                <div class="contract-clauses">
+                    <p>• <strong>Clause 1:</strong> Mohammed Ashar & Nadheema Safrin agree to stay together forever.</p>
+                    <p>• <strong>Clause 35:</strong> The symbol <strong>35</strong> shall forever represent our eternal bond of love, joy, and care.</p>
+                    <p>• <strong>Clause 3:</strong> Zero cancellations or expiration allowed!</p>
+                </div>
+                <div class="signature-area">
+                    <p>Sign below using finger or mouse:</p>
+                    <canvas id="signature-pad" width="280" height="90"></canvas>
+                    <div class="sig-btns mt-2">
+                        <button class="btn-sm btn-secondary" onclick="clearSignature()">Clear</button>
+                        <button class="btn-sm btn-primary" onclick="saveSignature()">Confirm 35 💖</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/audio.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/mic-blow.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
